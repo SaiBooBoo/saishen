@@ -123,9 +123,9 @@
       .hero {
         width: min(1120px, calc(100% - 32px));
         margin: 0 auto;
-        padding: clamp(2rem, 6vw, 5.5rem) 0 3rem;
+        padding: clamp(1.7rem, 5vw, 4.2rem) 0 3rem;
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 370px;
+        grid-template-columns: minmax(0, 1fr) 390px;
         gap: clamp(2rem, 5vw, 4.5rem);
         align-items: center;
       }
@@ -152,15 +152,15 @@
       h1 {
         max-width: 820px;
         margin-bottom: 1.25rem;
-        font-size: clamp(2.7rem, 8vw, 6.8rem);
-        line-height: 0.92;
+        font-size: clamp(2.15rem, 5.8vw, 4.9rem);
+        line-height: 1.02;
         letter-spacing: 0;
       }
 
       .lead {
         max-width: 680px;
         color: #383c40;
-        font-size: clamp(1.06rem, 2vw, 1.32rem);
+        font-size: clamp(1rem, 1.6vw, 1.18rem);
       }
 
       .actions {
@@ -193,80 +193,39 @@
 
       .portrait {
         position: relative;
-        min-height: 440px;
       }
 
-      .portrait-panel {
-        position: absolute;
-        inset: 0;
+      .profile-card {
+        padding: 0.85rem;
         border: 2px solid var(--ink);
-        background:
-          radial-gradient(circle at 24% 18%, rgba(196, 59, 59, 0.25), transparent 22%),
-          radial-gradient(circle at 78% 36%, rgba(184, 117, 22, 0.24), transparent 24%),
-          linear-gradient(145deg, #ffffff 0%, #f0f6ef 52%, #eaf0f8 100%);
+        background: var(--white);
         box-shadow: var(--shadow), 9px 9px 0 var(--ink);
-        overflow: hidden;
+        transform: rotate(1deg);
       }
 
-      .code-window {
-        position: absolute;
-        left: 28px;
-        right: 28px;
-        bottom: 34px;
-        border: 2px solid var(--ink);
-        background: #111315;
-        color: #eaf0f8;
-        box-shadow: 7px 7px 0 rgba(23, 23, 23, 0.2);
+      .profile-photo {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        border: 1px solid var(--line);
+        object-fit: cover;
+        object-position: center;
       }
 
-      .window-bar {
+      .profile-caption {
         display: flex;
-        gap: 0.35rem;
-        padding: 0.7rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-top: 0.85rem;
+        color: var(--muted);
+        font-size: 0.95rem;
       }
 
-      .dot {
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background: var(--red);
-      }
-
-      .dot:nth-child(2) {
-        background: var(--gold);
-      }
-
-      .dot:nth-child(3) {
-        background: var(--green);
-      }
-
-      .code-window pre {
-        margin: 0;
-        padding: 1.1rem;
-        overflow: hidden;
-        font-family: "Cascadia Code", Consolas, monospace;
-        font-size: 0.92rem;
-        line-height: 1.7;
-      }
-
-      .creator-badge {
-        position: absolute;
-        top: 34px;
-        left: -18px;
-        width: 145px;
-        min-height: 145px;
-        display: grid;
-        place-items: center;
-        border: 2px solid var(--ink);
-        background: var(--red);
-        color: var(--white);
-        text-align: center;
-        font-weight: 1000;
-        font-size: 1.7rem;
-        line-height: 1;
-        transform: rotate(-5deg);
-        box-shadow: 7px 7px 0 var(--ink);
+      .profile-caption strong {
+        display: block;
+        color: var(--ink);
+        font-size: 1rem;
       }
 
       .section {
@@ -294,6 +253,7 @@
       }
 
       .service-grid,
+      .video-grid,
       .social-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -372,6 +332,49 @@
       .stat strong {
         display: block;
         font-size: 1.5rem;
+      }
+
+      .video-card {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .video-card a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .video-thumb {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background: #111315;
+        object-fit: cover;
+      }
+
+      .video-body {
+        padding: 1rem;
+      }
+
+      .video-meta {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.65rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      .video-description {
+        min-height: 3.1rem;
+      }
+
+      .video-link {
+        display: inline-flex;
+        margin-top: 1rem;
+        color: var(--blue);
+        font-weight: 900;
       }
 
       .social-card {
@@ -492,12 +495,12 @@
         }
 
         .portrait {
-          min-height: 360px;
           max-width: 420px;
           width: 100%;
         }
 
         .service-grid,
+        .video-grid,
         .social-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
@@ -505,6 +508,7 @@
 
       @media (max-width: 560px) {
         .service-grid,
+        .video-grid,
         .social-grid {
           grid-template-columns: 1fr;
         }
@@ -514,16 +518,8 @@
           padding-right: 0.85rem;
         }
 
-        .creator-badge {
-          left: 18px;
-          width: 118px;
-          min-height: 118px;
-          font-size: 1.35rem;
-        }
-
-        .code-window {
-          left: 18px;
-          right: 18px;
+        .profile-card {
+          transform: none;
         }
       }
     </style>
@@ -539,6 +535,7 @@
         <nav class="nav" aria-label="Main navigation">
           <a href="#services">Services</a>
           <a href="#work">Work</a>
+          <a href="#videos">Videos</a>
           <a href="#connect">Connect</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -548,10 +545,10 @@
         <section class="hero" id="top">
           <div>
             <p class="eyebrow">Developer portfolio / creator hub</p>
-            <h1>Shen Zin Mao builds useful websites and teaches through code.</h1>
+            <h1>Hi, I'm Sai Shen Zin Mao.</h1>
             <p class="lead">
-              I am the person behind CodeWithShen, making web pages, practical digital tools,
-              and creator content for people who need a clear online presence without the noise.
+              You can call me Sai Shen. I am the person behind CodeWithShen, making web pages,
+              practical digital tools, and creator content for people who need a clear online presence.
             </p>
             <div class="actions" aria-label="Primary actions">
               <a class="button" href="https://t.me/Shiny_ThePro">Message on Telegram</a>
@@ -559,20 +556,17 @@
             </div>
           </div>
 
-          <div class="portrait" aria-label="CodeWithShen visual card">
-            <div class="portrait-panel"></div>
-            <div class="creator-badge">Code<br>With<br>Shen</div>
-            <div class="code-window" aria-hidden="true">
-              <div class="window-bar">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
+          <div class="portrait" aria-label="Sai Shen Zin Mao profile photo">
+            <div class="profile-card">
+              <img
+                class="profile-photo"
+                src="assets/sai-shen-profile.jpg"
+                alt="Sai Shen Zin Mao smiling on a balcony"
+              >
+              <div class="profile-caption">
+                <strong>Sai Shen</strong>
+                <span>CodeWithShen</span>
               </div>
-              <pre><code>const shen = {
-  craft: "websites",
-  voice: "clear lessons",
-  focus: "useful results"
-};</code></pre>
             </div>
           </div>
         </section>
@@ -633,6 +627,79 @@
                   Telegram and WeChat are the fastest ways to reach me.
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="videos">
+          <div class="section-inner">
+            <p class="eyebrow">Latest from YouTube</p>
+            <h2>Recent uploads from CodeWithShen.</h2>
+            <p class="section-copy">
+              A quick look at the newest videos currently visible on my YouTube channel, with thumbnails,
+              descriptions, upload timing, and view counts.
+            </p>
+
+            <div class="video-grid">
+              <article class="card video-card">
+                <a href="https://www.youtube.com/watch?v=XMeWcUWwn28" aria-label="Watch Conversations with Friends on YouTube">
+                  <img
+                    class="video-thumb"
+                    src="https://i.ytimg.com/vi/XMeWcUWwn28/hqdefault.jpg"
+                    alt="Thumbnail for Conversations with Friends"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="video-body">
+                  <div class="video-meta">
+                    <span>12 views</span>
+                    <span>1 year ago</span>
+                  </div>
+                  <h3><a href="https://www.youtube.com/watch?v=XMeWcUWwn28">Conversations with Friends</a></h3>
+                  <p class="video-description">#TheReadingRoom #ShenOdyssey</p>
+                  <a class="video-link" href="https://www.youtube.com/watch?v=XMeWcUWwn28">Watch video</a>
+                </div>
+              </article>
+
+              <article class="card video-card">
+                <a href="https://www.youtube.com/watch?v=Qjkssfvg4Kc" aria-label="Watch Understanding ART like a New Born on YouTube">
+                  <img
+                    class="video-thumb"
+                    src="https://i.ytimg.com/vi/Qjkssfvg4Kc/hqdefault.jpg"
+                    alt="Thumbnail for Understanding ART like a New Born"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="video-body">
+                  <div class="video-meta">
+                    <span>10 views</span>
+                    <span>1 year ago</span>
+                  </div>
+                  <h3><a href="https://www.youtube.com/watch?v=Qjkssfvg4Kc">Understanding ART like a New Born</a></h3>
+                  <p class="video-description">#art #elementofart #drawing #sketch #theoryclass</p>
+                  <a class="video-link" href="https://www.youtube.com/watch?v=Qjkssfvg4Kc">Watch video</a>
+                </div>
+              </article>
+
+              <article class="card video-card">
+                <a href="https://www.youtube.com/watch?v=gR-XhYZ9U3w" aria-label="Watch 30 Days of Chinese on YouTube">
+                  <img
+                    class="video-thumb"
+                    src="https://i.ytimg.com/vi/gR-XhYZ9U3w/hqdefault.jpg"
+                    alt="Thumbnail for 30 Days of Chinese | Shen Zin Mao's Journey"
+                    loading="lazy"
+                  >
+                </a>
+                <div class="video-body">
+                  <div class="video-meta">
+                    <span>44 views</span>
+                    <span>1 year ago</span>
+                  </div>
+                  <h3><a href="https://www.youtube.com/watch?v=gR-XhYZ9U3w">30 Days of Chinese | Shen Zin Mao's Journey</a></h3>
+                  <p class="video-description">No public YouTube description is available for this video.</p>
+                  <a class="video-link" href="https://www.youtube.com/watch?v=gR-XhYZ9U3w">Watch video</a>
+                </div>
+              </article>
             </div>
           </div>
         </section>
