@@ -1,16 +1,17 @@
-# GitHub Pages
+# Sai Shen Zin Mao | CodeWithShen
 
-<img src="https://octodex.github.com/images/Professortocat_v2.png" align="right" height="200px" />
+Personal portfolio and social hub for Sai Shen Zin Mao.
 
-Hey SaiBooBoo!
+## Links
 
-Mona here. I'm done preparing your exercise. Hope you enjoy! 💚
+- TikTok: https://www.tiktok.com/@saishenzinmao
+- YouTube: https://www.youtube.com/@codeWithShen
+- Facebook: https://www.facebook.com/ShenZinMao/
+- Goodreads: https://www.goodreads.com/shenzinmao
+- WeChat: `codeWithShen`
+- Telegram: https://t.me/Shiny_ThePro
+- Reddit: https://www.reddit.com/u/NamKhamMan/s/jbxOG1pYrh
 
-Remember, it's self-paced so feel free to take a break! ☕️
+## Local Preview
 
-[![](https://img.shields.io/badge/Go%20to%20Exercise-%E2%86%92-1f883d?style=for-the-badge&logo=github&labelColor=197935)](https://github.com/SaiBooBoo/skills-github-pages/issues/1)
-
----
-
-&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
+Open `index.html` in a browser, or publish the repository with GitHub Pages.

@@ -36,3 +36,6 @@
 ehthumbs.db
 Thumbs.db
 
+# Local nested checkout from the old broken submodule setup.
+saishen/
+
