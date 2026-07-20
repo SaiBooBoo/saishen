@@ -1,6 +1,6 @@
-# Shen Zin Mao | CodeWithShen
+# Sai Shen Zin Mao | CodeWithShen
 
-Personal portfolio and social hub for Shen Zin Mao.
+Personal portfolio and social hub for Sai Shen Zin Mao.
 
 ## Links
 
