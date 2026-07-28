@@ -2,4 +2,6 @@ To Do List
 # Add book review and reading session into it.
 # Announce my flute class on it.
 # cv download
-# proof that I'm working  
+# proof that I'm working 
+# add linkedin and Github link and that's all.
+ 
