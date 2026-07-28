@@ -168,6 +168,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        gap: 0.55rem;
         min-height: 48px;
         padding: 0.7rem 1rem;
         border: 2px solid var(--blue);
@@ -177,6 +178,23 @@
         font-weight: 900;
         text-decoration: none;
         box-shadow: 5px 5px 0 rgba(52, 211, 153, 0.3);
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 7px 7px 0 rgba(52, 211, 153, 0.4);
+      }
+
+      .btn-icon {
+        width: 20px;
+        height: 20px;
+        fill: currentColor;
+        transition: transform 250ms ease;
+      }
+
+      .button:hover .btn-icon {
+        transform: translateX(2px) scale(1.12);
       }
 
       .button.secondary {
@@ -186,16 +204,57 @@
         box-shadow: 5px 5px 0 rgba(96, 165, 250, 0.18);
       }
 
+      .button.secondary:hover {
+        background: rgba(96, 165, 250, 0.1);
+        box-shadow: 7px 7px 0 rgba(96, 165, 250, 0.28);
+      }
+
       .portrait {
         position: relative;
       }
 
       .profile-card {
+        position: relative;
         padding: 0.85rem;
         border: 2px solid var(--line);
         background: var(--card-bg);
         box-shadow: var(--shadow), 9px 9px 0 rgba(96, 165, 250, 0.2);
         transform: rotate(1deg);
+        transition: transform 400ms ease, box-shadow 400ms ease;
+      }
+
+      .profile-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(96, 165, 250, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(52, 211, 153, 0.07) 1px, transparent 1px);
+        background-size: 14px 14px;
+        opacity: 0;
+        transition: opacity 400ms ease;
+        pointer-events: none;
+        border-radius: inherit;
+      }
+
+      .profile-card:hover {
+        transform: rotate(0deg) scale(1.03);
+        box-shadow: var(--shadow),
+                    0 0 0 2px rgba(52, 211, 153, 0.5),
+                    0 0 0 4px rgba(96, 165, 250, 0.2),
+                    0 0 30px rgba(96, 165, 250, 0.15),
+                    0 0 60px rgba(52, 211, 153, 0.08),
+                    9px 9px 0 rgba(96, 165, 250, 0.4);
+      }
+
+      .profile-card:hover::after {
+        opacity: 1;
+        animation: gridGlow 2.5s ease-in-out infinite;
+      }
+
+      @keyframes gridGlow {
+        0%, 100% { opacity: 0.3; }
+        50%      { opacity: 0.9; }
       }
 
       .profile-photo {
@@ -330,6 +389,78 @@
         font-size: 1.5rem;
       }
 
+      .github-cta {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        margin-top: 2rem;
+        padding: 1.25rem 1.5rem;
+        border: 2px solid var(--line);
+        border-radius: 8px;
+        background: linear-gradient(135deg, rgba(139, 148, 158, 0.08), rgba(15, 23, 41, 0.95));
+        color: var(--ink);
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .github-cta:hover,
+      .github-cta:focus-visible {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+        border-color: #8b949e;
+      }
+
+      .github-cta-icon {
+        display: grid;
+        width: 52px;
+        height: 52px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 10px;
+        background: rgba(139, 148, 158, 0.15);
+        color: #8b949e;
+        border: 1.5px solid rgba(139, 148, 158, 0.3);
+        transition: background 200ms ease, color 200ms ease;
+      }
+
+      .github-cta:hover .github-cta-icon {
+        background: #8b949e;
+        color: var(--paper);
+      }
+
+      .github-cta-icon svg {
+        width: 28px;
+        height: 28px;
+        fill: currentColor;
+      }
+
+      .github-cta-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .github-cta-text strong {
+        font-size: 1.15rem;
+      }
+
+      .github-cta-text span {
+        color: var(--muted);
+        font-size: 0.94rem;
+      }
+
+      .github-cta-arrow {
+        margin-left: auto;
+        font-size: 1.5rem;
+        color: var(--muted);
+        transition: transform 180ms ease;
+      }
+
+      .github-cta:hover .github-cta-arrow {
+        transform: translateX(4px);
+      }
+
       .video-card {
         padding: 0;
         overflow: hidden;
@@ -401,7 +532,9 @@
         flex: 0 0 auto;
         place-items: center;
         border-radius: 8px;
-        color: var(--white);
+        color: var(--paper);
+        border: 1.5px solid;
+        transition: background 200ms ease, color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
       }
 
       .social-icon svg {
@@ -410,41 +543,108 @@
         fill: currentColor;
       }
 
+      .social-card:hover .social-icon {
+        color: var(--paper);
+        transform: scale(1.06);
+      }
+
       .tiktok {
-        background: #25f4ee;
-        color: #111315;
+        background: rgba(45, 212, 191, 0.18);
+        color: #2dd4bf;
+        border-color: rgba(45, 212, 191, 0.35);
+      }
+      .social-card:hover .tiktok {
+        background: #2dd4bf;
+        border-color: #2dd4bf;
+        box-shadow: 0 0 12px rgba(45, 212, 191, 0.5), 0 0 30px rgba(45, 212, 191, 0.2);
       }
 
       .youtube {
-        background: #d72d2d;
+        background: rgba(239, 68, 68, 0.18);
+        color: #ef4444;
+        border-color: rgba(239, 68, 68, 0.35);
+      }
+      .social-card:hover .youtube {
+        background: #ef4444;
+        border-color: #ef4444;
+        box-shadow: 0 0 12px rgba(239, 68, 68, 0.5), 0 0 30px rgba(239, 68, 68, 0.2);
       }
 
       .facebook {
-        background: #255f9e;
+        background: rgba(59, 130, 246, 0.18);
+        color: #3b82f6;
+        border-color: rgba(59, 130, 246, 0.35);
+      }
+      .social-card:hover .facebook {
+        background: #3b82f6;
+        border-color: #3b82f6;
+        box-shadow: 0 0 12px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.2);
       }
 
       .goodreads {
-        background: #7b5c37;
+        background: rgba(217, 119, 6, 0.18);
+        color: #d97706;
+        border-color: rgba(217, 119, 6, 0.35);
+      }
+      .social-card:hover .goodreads {
+        background: #d97706;
+        border-color: #d97706;
+        box-shadow: 0 0 12px rgba(217, 119, 6, 0.5), 0 0 30px rgba(217, 119, 6, 0.2);
       }
 
       .telegram {
-        background: #2481cc;
+        background: rgba(14, 165, 233, 0.18);
+        color: #0ea5e9;
+        border-color: rgba(14, 165, 233, 0.35);
+      }
+      .social-card:hover .telegram {
+        background: #0ea5e9;
+        border-color: #0ea5e9;
+        box-shadow: 0 0 12px rgba(14, 165, 233, 0.5), 0 0 30px rgba(14, 165, 233, 0.2);
       }
 
       .reddit {
-        background: #e5532d;
+        background: rgba(249, 115, 22, 0.18);
+        color: #f97316;
+        border-color: rgba(249, 115, 22, 0.35);
+      }
+      .social-card:hover .reddit {
+        background: #f97316;
+        border-color: #f97316;
+        box-shadow: 0 0 12px rgba(249, 115, 22, 0.5), 0 0 30px rgba(249, 115, 22, 0.2);
       }
 
       .wechat {
-        background: #1f7a4d;
+        background: rgba(34, 197, 94, 0.18);
+        color: #22c55e;
+        border-color: rgba(34, 197, 94, 0.35);
+      }
+      .social-card:hover .wechat {
+        background: #22c55e;
+        border-color: #22c55e;
+        box-shadow: 0 0 12px rgba(34, 197, 94, 0.5), 0 0 30px rgba(34, 197, 94, 0.2);
       }
 
       .linkedin {
+        background: rgba(10, 102, 194, 0.18);
+        color: #0a66c2;
+        border-color: rgba(10, 102, 194, 0.35);
+      }
+      .social-card:hover .linkedin {
         background: #0a66c2;
+        border-color: #0a66c2;
+        box-shadow: 0 0 12px rgba(10, 102, 194, 0.5), 0 0 30px rgba(10, 102, 194, 0.2);
       }
 
       .github {
-        background: #333;
+        background: rgba(139, 148, 158, 0.18);
+        color: #8b949e;
+        border-color: rgba(139, 148, 158, 0.35);
+      }
+      .social-card:hover .github {
+        background: #8b949e;
+        border-color: #8b949e;
+        box-shadow: 0 0 12px rgba(139, 148, 158, 0.5), 0 0 30px rgba(139, 148, 158, 0.2);
       }
 
       .handle {
@@ -528,4 +728,65 @@
         .profile-card {
           transform: none;
         }
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      [data-reveal] {
+        opacity: 0;
+        transition: opacity 0.7s ease, transform 0.7s ease;
+      }
+
+      [data-reveal=top] {
+        transform: translateY(-40px);
+        transition-delay: 0.1s;
+      }
+      [data-reveal=top].visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      [data-reveal=left] {
+        transform: translateX(-60px);
+        transition-delay: 0.25s;
+      }
+      [data-reveal=left].visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      [data-reveal=right] {
+        transform: translateX(60px);
+        transition-delay: 0.4s;
+      }
+      [data-reveal=right].visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      [data-reveal=bottom] {
+        transform: translateY(40px);
+        transition-delay: 0.55s;
+      }
+      [data-reveal=bottom].visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      [data-reveal=scale] {
+        transform: rotate(1deg) scale(0.85);
+        transition-delay: 0.7s;
+      }
+      [data-reveal=scale].visible {
+        opacity: 1;
+        transform: rotate(1deg) scale(1);
       }
